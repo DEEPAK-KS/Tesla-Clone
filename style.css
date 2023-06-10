@@ -1,0 +1,242 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    overflow: hidden;
+}
+
+body{
+    color: #171a20;
+    font-family: 'M PLUS 1p', sans-serif;
+}
+
+article{
+    scroll-snap-type: y mandatory;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+}
+
+.desktop{
+    display: none;
+}
+
+@media (min-width: 1200px) {
+    .desktop{
+        display: initial;
+    }
+    article{
+        scroll-snap-type: y mandatory;
+        aspect-ratio: 2/1;
+        overflow: auto;
+    }
+}
+
+header{
+    display:grid;
+    grid-template-columns: auto 1fr auto ;
+    padding: 15px 10px;
+    position: fixed;
+    top:0;
+    z-index: 2;
+    width:100%;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: color 0.4s linear;
+}
+
+header nav.center{
+    color: inherit;
+    text-align: center; 
+}
+
+header nav.right{
+    color: inherit;
+    text-align: right;
+    padding-right: 10px;
+}
+
+aside a:hover{
+    background-color: rgba(0,0,0,.06);
+    padding: 5px 5px;
+    border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+
+.hov{
+    position: relative;   
+}
+
+.hov::before{
+    border-radius: 3px;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.06);
+    z-index: -1;
+    transition: transform 0.5s;
+    transform-origin: 0 0;
+    transition-timing-function: cubic-bezier(0.5,1.6,0.4,0.7);
+}
+
+.hov::before{
+    transform: scaleX(0);
+}
+
+.hov:hover::before{
+    transform: scaleX(1);
+}
+
+
+}
+
+
+div a{
+    text-decoration: underline;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+section{
+    display: flex;
+    background-size: cover;
+    height: 100vh;
+    background-position: center center;
+    scroll-snap-align: start;  
+    scroll-snap-stop: always;
+}
+
+section .content{
+    width: 100%;
+    height: 100vh;
+    padding-top: 15vh;
+    padding-bottom: 15vh;
+    text-align: center;
+    display: grid;
+    grid-template-rows: min-content auto min-content;
+}
+
+h1{
+    font-size: 40px;
+}
+
+div .buttons a{
+    display: block;
+    background-color: #eee;
+    padding: 12px 100px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+section .buttons a:first-child{
+    background-color: #444;
+    color: #eee;
+}
+
+section .button{
+    display: block;
+    background-color:black;
+    color: #eee;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 12px 100px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+
+section .buttons{
+    display: grid;
+    row-gap: 20px;
+    margin: 0 40px;
+}
+
+@media (min-width: 768px) {
+    section .buttons{
+        grid-template-columns: 1fr 1fr;
+        max-width: 640px;
+        margin: -20px auto; 
+        column-gap: 20px;
+    }
+}
+
+nav.lst{
+    font-size: 12px;
+    padding: 12px 12px;
+    text-align: center;
+}
+
+aside{
+    position: fixed;
+    transition: right .4s ease-in;
+    right: -320px;
+    width: 320px;
+    background-color: white;
+    padding: 80px 50px;
+    z-index: 4;
+    height: 100%;
+    font-weight: 600;
+    overflow: auto;
+}
+
+aside.active{
+    right: 0;
+}
+
+aside a{
+    display:block;
+    padding: 12px 0;
+    font-size: 14px;
+}
+
+aside button.close{
+    font-size: 30px;
+    border: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    font-family: sans-serif;
+    cursor: pointer;
+}
+
+.backdrop{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0,0,0,.35);
+    backdrop-filter:blur(5px) ;
+}
+
+.backdrop.active{
+    display:block;
+}
+
+.box{
+    padding: 5px 15px;
+    border-radius: 1px;
+    background-color: rgba(0,0,0,.1);
+}
+
+@media (min-width: 1200px) {
+.box{
+    border: none;
+    background-color: rgba(255, 255, 255, 0.06);
+}
+}
